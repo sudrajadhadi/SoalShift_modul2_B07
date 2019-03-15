@@ -121,3 +121,40 @@ Source Code : [Soal4.c](https://github.com/sudrajadhadi/SoalShift_modul2_B07/blo
   sprintf(str,"_sehat%d.txt",counter );
   strcat(path,str);
   ```
+
+### Nomer 5
+
+###### Jawab
+Source Code: [Soal5.c](https://github.com/sudrajadhadi/SoalShift_modul2_B07/blob/master/soal%205/soal5.c)
+
+* Mengambil localtime untuk membuat folder dengan
+    ```
+    time_t t = time(NULL);
+    struct tm current = *localtime(&t);
+    ```
+* Membuat format direktori menjadi dd:mm:yyyy-hh:mm dengan
+    ```
+    sprintf(folder,"%d:%d:%d-%d:%d", current.tm_mday, current.tm_mon+1, current.tm_year+1900, current.tm_hour, current.tm_min);
+    strcat(dir, folder);
+    ```
+* Membuat direktori tersebut dan mengubah hak aksesnya
+    ```
+    mkdir(dir, 0777);
+    ```
+* Membuat file log#.log tiap menit yaitu sleep(60) dari syslog
+    ```
+    while(i < 30){
+            syslog = fopen("/var/log/syslog", "r");
+            char file[100];
+            char c;
+            FILE *logbaru;
+	    i++;
+            sprintf(file, "%s/log%d.log", dir, i);
+            logbaru = fopen(file, "w");
+            while(fscanf(syslog, "%c", &c) != EOF) fprintf(logbaru, "%c", c);
+            fclose(logbaru);
+            fclose(syslog);
+            sleep(60);
+    }
+    ```
+    Loop diatas: membuka syslog dan menyimpan isinya kedalam log#.log
