@@ -48,8 +48,8 @@ int main() {
 	   int dif = difftime(now, info_file.st_atime); 
 	   if(dif<=30){ 
 	   	char path[150],str[20];
-		strcpy(path, "/home/its_time_to/Documents/makan_sehat");
-	     	sprintf(str,"%d.txt",counter );
+		strcpy(path, "/home/its_time_to/Documents/makan");
+	     	sprintf(str,"_sehat%d.txt",counter );
 	     	strcat(path,str);
 	     	FILE *baru;
 	    	baru = fopen(path,"w");
