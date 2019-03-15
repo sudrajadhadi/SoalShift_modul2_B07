@@ -26,7 +26,7 @@ Source Code: [Soal1.c](https://github.com/sudrajadhadi/SoalShift_modul2_B07/blob
 * Jika file tersebut merupakan file berekstensi png, maka nama file tersebut akan diubah menjadi [namafile]_grey.png
   ```
   if(nama[cpy-4] == '.' && nama[cpy-3]=='p' && nama[cpy-2]=='n' && nama[cpy-1] == 'g'){
-		strcpy(namafile, "/home/xhazimix/Documents/modul2/gambar/");
+		strcpy(namafile, "/home/user/Documents/modul2/gambar/");
 		strcat(namafile, nama);
 		cpy = (int)strlen(namafile);
 		namafile[cpy-4] = '\0';
