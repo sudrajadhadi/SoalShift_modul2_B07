@@ -38,7 +38,8 @@ int main() {
 	    int cpy = (int) strlen(dir->d_name);
 	    char *nama = dir->d_name;
 	    if(nama[cpy-4] == '.' && nama[cpy-3]=='p' && nama[cpy-2]=='n' && nama[cpy-1] == 'g'){
-		strcpy(namafile, "/home/xhazimix/Documents/modul2/gambar/");
+		printf("%s %d\n", dir->d_name, (int) strlen(dir->d_name));
+		strcpy(namafile, "/home/xhazimix/modul2/gambar/");
 		strcat(namafile, nama);
 		cpy = (int)strlen(namafile);
 		namafile[cpy-4] = '\0';
@@ -47,11 +48,12 @@ int main() {
 			char *argv[] = {"mv", nama, namafile, NULL};
 			execv("/bin/mv", argv);
 		}
+		printf("%s\n", namafile);
             }
         }
         closedir(directory);
     }
-    sleep(5);
+    sleep(10);
   } 
   exit(EXIT_SUCCESS);
 }
