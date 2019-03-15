@@ -99,3 +99,25 @@ Source Code : [Soal3.c](https://github.com/sudrajadhadi/SoalShift_modul2_B07/blo
   ```
   if (strstr(&temp[strlen(temp)-5], ".txt") != NULL)
   ```
+### Nomer 4
+Membuat progam untuk membuat file makan_sehat1.txt hingga tak terhingga dengan syarat file makan_enak.txt telah dibuka dalam kurun waktu 30 detik
+
+##### Jawab
+Source Code : [Soal4.c](https://github.com/sudrajadhadi/SoalShift_modul2_B07/blob/master/soal%204/soal4.c)
+
+* pertama membuat perbandingan waktu, antara waktu yang sekarang dengan waktu terakhir file di buka, sama seperti soal ke 2, kali ini juga menggunakan fungsi stat untuk mendapatkan waktu file terakhir dibuka
+  ```
+  int dif = difftime(now, info_file.st_atime); 
+  ```
+  
+* karena yang diminta syaratnya dalam kurun waktu 30 detik, maka dibuatkan kondisi
+  ```
+  if(dif<=30)
+  ```
+  
+* setelah syarat terpenuhi, maka membuat file dengan format "makan_sehat[counter].txt", dengan variabel counter adalah increment dimulai dengan angka 1
+  ```
+  strcpy(path, "/home/its_time_to/Documents/makan");
+  sprintf(str,"_sehat%d.txt",counter );
+  strcat(path,str);
+  ```
