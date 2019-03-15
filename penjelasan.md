@@ -31,3 +31,32 @@ Source Code : [Soal2.c](https://github.com/sudrajadhadi/SoalShift_modul2_B07/blo
   ```
   sleep(3);
   ```
+### Nomer 3
+diminta untuk extract file campur2.zip dan menyimpan daftar file berekstensi .txt kedalam file bernama daftar.txt
+
+##### Jawab
+Source Code : [Soal3.c](https://github.com/sudrajadhadi/SoalShift_modul2_B07/blob/master/soal%203/soal3.c)
+
+* Pertama diminta untuk mengextract file campur2.zip
+  ```
+  execl("/usr/bin/unzip", "unzip", "campur2.zip", NULL);
+  ```
+  
+* kemudian membuat file daftar.txt untuk menyimpan daftar file berformat .txt yang ada pada folder campur2
+  ```
+  execlp("touch", "touch", "daftar.txt", NULL);
+  ```
+  
+* dengan menggunakan fungsi pipe() dan dup2() kita dapat menyimpan daftar isi file yang ada pada folder campur2
+  ```
+  pipe(to);
+  close(to[0]);
+  
+  dup2(to[1], STDOUT_FILENO);
+  execlp("ls", "ls", "campur2", NULL)
+  ```
+  
+* karena yang diminta adalah file yang berformat .txt maka di buat kondisi agar yang tertulis dalam file daftar.txt hanya file berformat .txt
+  ```
+  if (strstr(&temp[strlen(temp)-5], ".txt") != NULL)
+  ```
