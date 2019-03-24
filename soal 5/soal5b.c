@@ -16,7 +16,7 @@ int main(){
     char tmp[10] = {0};
     FILE *getPID;
 
-    getPID = popen("pidof /home/xhazimix/Documents/sisop/prak2/soal5.exe", "r");
+    getPID = popen("pidof /home/xhazimix/Documents/sisop/prak2/soal5", "r");
     fgets(tmp, 10, getPID);
     pid_t pid = strtoul(tmp, NULL, 10);
     pclose(getPID);
